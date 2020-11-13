@@ -1,0 +1,45 @@
+{
+	"name": "ds_asql_demo",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_asql_demo",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "movieid",
+				"type": "varchar"
+			},
+			{
+				"name": "title",
+				"type": "varchar"
+			},
+			{
+				"name": "genres",
+				"type": "varchar"
+			},
+			{
+				"name": "year",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "rating",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "rotton",
+				"type": "float",
+				"precision": 15
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "moviedb"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

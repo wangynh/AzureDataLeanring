@@ -1,0 +1,32 @@
+{
+	"name": "df_map_moviedb_to_asql",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_moviedb",
+						"type": "DatasetReference"
+					},
+					"name": "dlmovedb"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ds_asql_demo",
+						"type": "DatasetReference"
+					},
+					"name": "sinktodb"
+				}
+			],
+			"transformations": [
+				{
+					"name": "DerivedColumns"
+				}
+			],
+			"script": "source(output(\n\t\tmovie as string,\n\t\ttitle as string,\n\t\tgenres as string,\n\t\tyear as string,\n\t\tRating as string,\n\t\t{Rotton Tomato} as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> dlmovedb\ndlmovedb derive(movie = lower(movie),\n\t\ttitle = upper(title),\n\t\tgenres = lower(genres)) ~> DerivedColumns\nDerivedColumns sink(input(\n\t\tmovieid as string,\n\t\ttitle as string,\n\t\tgenres as string,\n\t\tyear as integer,\n\t\trating as double,\n\t\trotton as double\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\tformat: 'table',\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sinktodb"
+		}
+	}
+}
