@@ -1,0 +1,24 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adfwangynhdemo"
+		},
+		"ls_asdlgen2_accountKey": {
+			"value": ""
+		},
+		"ls_asql_demo_connectionString": {
+			"value": ""
+		},
+		"ls_asdlgen2_properties_typeProperties_url": {
+			"value": "https://asdl2wangynhdatalake.dfs.core.windows.net"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
